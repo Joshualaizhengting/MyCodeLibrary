@@ -10,6 +10,11 @@ def insertBSTNode(node, value):
     if node is None:
         return BTNode(value)
     
+    """if value is smaller, create a node on the left
+    if the value is larger, create a node on the right
+    if node is none => creates a child node if not recursively traverse down the root"""
+
+
     if value < node.data:
         if node.left is None:
             node.left = BTNode(value)

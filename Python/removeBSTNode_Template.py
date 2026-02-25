@@ -23,6 +23,56 @@ def findMin(node):
 
 def removeBSTNode(node, value):
  # Write your code here #
+    if node is None:
+        return node
+    
+    if node.item > value:
+        #if root is larger recurse left because value is smaller than root 
+        node.left = removeBSTNode(node.left, value)
+
+    elif node.item < value:
+        #if root is smaller recurse right because value is larger
+        node.right = removeBSTNode(node.right, value)
+
+
+        #found the node now we handle deletion based on chidlren count
+    else:
+
+        #case 1: node has no left child (0/1 on right)
+        if node.left is None:
+            return node.right   #replace with right node
+        
+        #case 2: node has no right child(1 on left)
+        if node.right is None:
+            return node.left    #replace with left node
+        
+        #for nodes with 2 children
+
+        #get successor node
+        succ = getsuccessor(node)
+        
+        #copy successor val into current node
+        node.item = succ.item
+
+        #remove the successor from the tree
+        node.right = removeBSTNode(node.right, succ.item)
+
+        #much easier as it now changes the 2 children problem to only 1 children or no children => 
+        #copy the succssor value into the node to be removed and then remove the successor
+
+    return node
+    
+def getsuccessor(curr):
+    """get inorder successor => the node that is slightly greater than the target node to remove 
+        when we delete a node with 2 children we must have another node replace it so that 2 children isnt removed =>
+        look for the next slightly greater node so that bst remains intact """
+    
+    curr = curr.right
+    while curr is not None and curr.left is not None:
+        curr = curr.left
+    return curr
+    #at this point curr is at the node that is slightly larger than the target node
+
 
 def printBSTInOrder(node):
     """ Print BST items in sorted order using in-order traversal. """

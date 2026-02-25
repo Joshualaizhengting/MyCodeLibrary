@@ -70,6 +70,8 @@ class LinkedList:
             print(cur.data, end=" -> ")
             cur = cur.next
         print("None")
+
+        
 def findUnion(head1, head2):
 # Write your code here #
 
