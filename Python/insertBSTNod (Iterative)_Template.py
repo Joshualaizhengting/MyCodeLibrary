@@ -9,7 +9,23 @@ def insertBSTNode(root, value):
     # Write your code here #
     if root is None:
         return BTNode(value)
+
+    parent = None
+    current = root
+
+    while current:
+        parent = current
+        if value < current.item:
+            current = current.left
+        else:
+            current = current.right
     
+    if value < parent.item:
+        parent.left = BTNode(value)
+    else:
+        parent.right = BTNode(value)
+    
+    return root
     
 
 def printTree(node, level=0, prefix="Root: "):
