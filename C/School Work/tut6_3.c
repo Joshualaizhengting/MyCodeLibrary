@@ -42,6 +42,10 @@ int rCountArray(int array[], int n, int a){
     }else{
         => return (if a match, add 1, else add 0) + count from rest doing the same
         return (array[0] == a ? 1:0) + rCountArray(array + 1, n-1, a);
+        
+        or alternatively abusing the fact that true = 1 and false = 0
+
+        return (array[0] == a) + rCountArray(array+1, n-1, a);
     }
 }
 */
