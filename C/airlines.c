@@ -37,6 +37,7 @@ int main(){
             
             case 2: printf("assignSeat(): \n");
                     assignSeat(list, &size);
+                    
                     break;
             
             case 3: printf("removeSeat(): \n");
@@ -51,9 +52,11 @@ void listtakenSeat(Seat *arr, int *size){
     if (*size == 0){
         printf("The seat assignment list is empty\n");
     } else {
-        for (int i=0; i<*size; i++){
-            printf("Customer name: %s\n", arr[i].name);
-            printf("Seat number (ID): %d\n", arr[i].ID);
+        for (int i=0; i<5; i++){
+            if (arr[i].status == 1){
+                printf("Customer name: %s\n", arr[i].name);
+                printf("Seat number (ID): %d\n", arr[i].ID);
+            }
         }
     }
 }
@@ -72,7 +75,7 @@ void assignSeat(Seat *arr, int *size){
     printf("Enter the seat number: \n");
     do{
         scanf("%d", &id);
-        scanf("%c", &dummy);
+        while ((dummy = getchar()) != '\n' && dummy != '\0');
         if (id < 1 || id > 5){
             printf("Please enter a seat number between 1 and 5\n");
             
@@ -98,7 +101,7 @@ void assignSeat(Seat *arr, int *size){
 void removeSeat(Seat *arr, int *size){
     int seatID;
     if (*size == 0){
-        printf("All the seats are vacant. \n");
+        printf("All the seats are vacant\n");
         return;
     }
     printf("Enter the seat number: \n");
@@ -110,7 +113,7 @@ void removeSeat(Seat *arr, int *size){
         }else if (arr[seatID-1].status == 0){
             printf("Empty! Enter another seat number for removal\n");
         
-        }else{
+        }else if (arr[seatID-1].ID == seatID){
             arr[seatID-1].ID = 0;
             arr[seatID-1].status = 0;
             memset(arr[seatID-1].name, 0, 20);

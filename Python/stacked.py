@@ -21,7 +21,7 @@ class Stack:
 
     def pop(self):
         if self.is_empty():
-            raise IndexError("Pop from empty stack")
+            raise IndexError("Pop from empty stack")        
         popped_node = self.top      #mentioned above, can only pop from the top, however, as we pop we want to keep the data but the data will be auto deleted
         self.top = self.top.next    #so we put the popped data into a temp val first        #nove top to next node
         self.size -= 1
@@ -32,7 +32,7 @@ class Stack:
     
     def get_size(self):
         return self.size
-    
+  
 if __name__ == "__main__":
     s = Stack()
 

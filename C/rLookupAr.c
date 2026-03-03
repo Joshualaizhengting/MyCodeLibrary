@@ -25,7 +25,6 @@ int main()
 
 int rLookupAr(int array[], int size, int target){
  /* Write your code here */
-    int count = 0;
     if (size == 0){
         return -1;
     }
