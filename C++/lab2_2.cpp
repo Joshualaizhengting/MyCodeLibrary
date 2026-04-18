@@ -19,7 +19,7 @@ public:
 
     //getters
     string getName(){return name;}
-    int getPrice(){return price;}
+    double getPrice(){return price;}
 
     //setters
     void setPrice(double newPrice){

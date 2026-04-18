@@ -38,18 +38,14 @@ def hash_insert(ht, key):
     
     index = hash_func(key, ht.hSize)
     curr = ht.table[index]
-
-    prev = None
     while curr:
         if curr.key == key:
             return False
-        prev = curr
         curr = curr.next
+
     new_node = Node(key)
-    if prev is None:
-        ht.table[index] = new_node
-    else:
-        prev.next = new_node
+    new_node.next = ht.table[index]
+    ht.table[index] = new_node
     ht.nSize += 1
     return True
     
@@ -62,6 +58,7 @@ def hash_delete_biggest(ht):
     max_key = None
     max_index = None
     max_prev = None
+    max_node = None
 
     for i in range(ht.hSize):
         prev = None
@@ -71,6 +68,7 @@ def hash_delete_biggest(ht):
                 max_key = curr.key
                 max_index = i
                 max_prev = prev
+                max_node = curr
             prev = curr
             curr = curr.next
         
@@ -80,7 +78,7 @@ def hash_delete_biggest(ht):
     if max_prev is None:
         ht.table[max_index] = ht.table[max_index].next
     else:
-        max_prev.next = max_prev.next.next
+        max_prev.next = max_node.next
     ht.nSize -= 1
     return 1
 
