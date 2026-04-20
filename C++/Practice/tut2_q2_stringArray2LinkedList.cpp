@@ -35,11 +35,21 @@ void arrayToLinkedList(const string* arr, int size, StringNode*& head) {
     //
     //
     //
+    for (int i = 0; i<size; i++){
+        StringNode* node = new StringNode;
+        node->name = arr[i];
+        node->next = nullptr;
 
-
-    
-
-
+        if (head == nullptr){
+            head = node;
+        }else{
+            StringNode *curr = head;
+            while(curr->next){
+                curr = curr->next;
+            }
+            curr->next = node;
+        }
+    }
 
 }
 

@@ -12,24 +12,16 @@ private:
 public:
     // Default constructor
     ExamResult() : result(nullptr), size(0) {}
-
-    ExamResult(const ExamResult &other){
-        size = other.size;
-        if (size>0){
-            result = T[size];
-            for (int i = 0; i<size; i++){
-                result[i] = other.result[i];
-            }
-        }else{
-            result = nullptr;
-        }
-    }
-
     
     void setExamResult(T* array, int len) {
         // TO-DO: Set the exam result as the input array
         //
-
+        delete[] result;
+        result = new T[len];
+        size = len;
+        for (int i = 0; i<len; i++){
+            result[i] = array[i];
+        }
     }
 
 
@@ -37,21 +29,27 @@ public:
         // TO-DO: Update the exam result at i-th location to new result
         //
         //
-
-
+        if (i>= size || i<0){
+            cout << "IndexError";
+        }else{
+            result[i] = newResult;
+        }
     }
 
 
     void printExamResult() const {
         // TO-DO: Print all exam results
-        //
-
+        for (int i = 0; i<size; i++){
+            cout << result[i] << " ";
+        }
+        cout << "\n";
     }
 
     
     ~ExamResult() {
         // TO-DO: Destructor to free allocated memory
         //
+        delete [] result;
 
     }
 };

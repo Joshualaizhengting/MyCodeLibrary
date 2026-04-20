@@ -60,26 +60,7 @@ void insertNode2ListEnd(Node*& head, double newValue) {
 void insertNode2SortedList(Node*& head, double number)
 {
     // TO-DO: WRITE YOUR CODE HERE
-    Node* curr = head, *prev = nullptr;
-    Node* newNode = new Node;
-    newNode->value = number;
-    newNode->next = nullptr;
-
-    if (head == nullptr || newNode->value < head->value){
-        newNode->next = head;
-        head = newNode; 
-        return;
-    }
     
-    while (curr != nullptr){
-        if (newNode->value <= curr->value){
-            break;
-        }
-        prev = curr;
-        curr = curr->next;
-    }
-    newNode->next = curr;
-    prev->next = newNode;
 }
 
 

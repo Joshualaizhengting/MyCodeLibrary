@@ -16,22 +16,36 @@ public:
     void setExamResult(T* array, int len) {
         // TO-DO: Set the exam result as the input array
         //
+        delete[] result;            //delete the nullptr
+        result = new T[len];        //reset result as a new array
+        size = len;
 
+        for (int i = 0; i<len; i++){
+            result[i] = array[i];
+        }
+        
     }
-
 
     void updateResultAtOneLoc(int i, const T &newResult) {
         // TO-DO: Update the exam result at i-th location to new result
         //
         //
-
-
+        if (i<size || i>0){
+            result[i] = newResult;
+        }else{
+            cout <<"Out of the size limit";
+            return;
+        }
     }
 
 
     void printExamResult() const {
         // TO-DO: Print all exam results
         //
+        for (int i = 0; i<size; i++){
+            cout << result[i] <<" ";
+        }
+        cout << "\n";
 
     }
 
@@ -39,7 +53,7 @@ public:
     ~ExamResult() {
         // TO-DO: Destructor to free allocated memory
         //
-
+        delete[]result;         //technically no error if omitted but do this to prevent mem leak
     }
 };
 

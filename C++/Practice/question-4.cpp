@@ -19,15 +19,20 @@ public:
         // Caclulate and display the volume of the box
         // TODO: Write your code here
         //
-
-
+        double volume;
+        volume = length * width * height;
+        std::cout <<"\nVolume: " <<volume;
     }
 
     // Declare a friend function to display private members
     // TODO: Write your code here
     //
-
+    friend void displayDimensions(Box myBox);
 };
+
+void displayDimensions(Box myBox){
+    std::cout <<"Length: " <<myBox.length <<"\nWidth: " << myBox.width << "\nHeight: " <<myBox.height;
+}
 
 
 // Define the friend function (that can access private members of Box)

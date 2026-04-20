@@ -15,22 +15,19 @@ public:
     Pen& setColor(std::string newColor) {
         // TO-DO: Write your code here
         //
-
-
+        this->color = newColor;
     }
 
     Pen& setPrice(double newPrice) {
         // TO-DO: Write your code here
         //
-
-
+        this->price = newPrice;
     }
 
     void display() const {
         // TO-DO: Write your code here
         //
-
-        
+        std::cout << color << " " << price;
     }
 };
 

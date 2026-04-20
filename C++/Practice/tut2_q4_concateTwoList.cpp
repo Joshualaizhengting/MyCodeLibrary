@@ -56,11 +56,18 @@ void concateTwoLists(Node*& firstList, Node*& secondList) {
     //
     //
     //
-
-
-
-
-
+    if (firstList == nullptr){
+        firstList = secondList;
+        secondList = nullptr;
+        return;
+    }
+    Node *curr = firstList;
+    while(curr->next){
+        curr = curr->next;
+    }
+    curr->next = secondList;
+    secondList = nullptr;
+    
 }
 
 int main() {

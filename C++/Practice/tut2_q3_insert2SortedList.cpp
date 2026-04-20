@@ -63,11 +63,27 @@ void insertNode2SortedList(Node*& head, double number)
     //
     //
     //
-    
+    Node *curr = head;
+    Node *prev = nullptr;
+    Node *newNode = new Node;
+    newNode->value = number;
 
 
+    if (head == nullptr || newNode->value < head->value){
+        newNode->next = head;
+        head = newNode;
+        return;
+    }
 
-
+    while (curr->next){
+        if (newNode->value <= curr->value){
+            break;
+        }
+        prev = curr;
+        curr = curr->next;
+    }
+    prev->next = newNode;
+    newNode->next = curr;
 }
 
 

@@ -5,7 +5,17 @@ using namespace std;
 //
 //
 //
+int calArea(int side){
+    return side * side;
+}
 
+int calArea(int width, int length){
+    return width * length;
+}
+
+int calArea(int b1, int b2, int height){
+    return (b1 + b2)/2 * height;
+}
 
 
 int main() {

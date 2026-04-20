@@ -5,6 +5,22 @@ using namespace std;
 //
 //
 //
+template <typename T>
+T calArea(T side){
+    return side * side;
+}
+
+template <typename T>
+T calArea(T length, T width){
+    return length * width;
+}
+
+template <typename T>
+T calArea(T b1, T b2, T height){
+    T half = (b1 + b2)/2;
+    return half * height;
+}
+
 
 
 

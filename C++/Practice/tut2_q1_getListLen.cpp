@@ -12,9 +12,15 @@ int getListLen(const ListNode* head) {
     //
     //
     //
+    int count = 0;
 
+    const ListNode* curr = head;
+    while (curr != nullptr){
+        curr = curr->next;
+        count++;
+    }
 
-
+    return count;
 }
 
 int main() {
